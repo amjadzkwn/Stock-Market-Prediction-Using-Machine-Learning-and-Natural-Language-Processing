@@ -1,7 +1,5 @@
 # Stock Market Prediction Using Machine Learning and Natural Language Processing
 
-A brief description of what this project does and who it's for.
-
 # Data Collection
 
 # Exploratory Data Analysis
@@ -10,4 +8,16 @@ A brief description of what this project does and who it's for.
 
 # Feature Engineering
 
-# Model
+# Model Development
+
+# Evaluation and Comparison for Regression Models
+
+# Evaluation and Comparison for Classification Models
+
+# Evaluation and Comparison for Sentiment Models
+
+# Models Integration
+
+# Hybrid Model Output
+
+# Impact of The Project
