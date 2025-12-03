@@ -1,0 +1,10 @@
+Parameter,Value
+Best Parameters,"{'svm__C': 100, 'svm__gamma': 'scale', 'svm__kernel': 'linear'}"
+Best CV Score,0.7739
+Test Accuracy,0.7631
+Train Accuracy,0.7809
+Number of Features,11
+Train Samples,995
+Test Samples,249
+Feature Names,"Open, High, Low, Close, Adj Close, Volume, SMA5, SMA10, EMA10, Return, Momentum"
+Kernel Type,linear

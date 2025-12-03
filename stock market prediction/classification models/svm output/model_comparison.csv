@@ -1,0 +1,3 @@
+Model,Test Accuracy,Best Parameters
+Baseline SVM,0.642570281124498,rbf (default)
+Tuned SVM,0.7630522088353414,"{'svm__C': 100, 'svm__gamma': 'scale', 'svm__kernel': 'linear'}"

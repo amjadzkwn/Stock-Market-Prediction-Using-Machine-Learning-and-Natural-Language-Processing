@@ -1,1 +1,26 @@
+Best Parameters:
+{'svm__C': 100, 'svm__gamma': 'scale', 'svm__kernel': 'linear'}
 
+=== TRAINING ===
+Accuracy: 0.7809045226130653
+
+              precision    recall  f1-score   support
+
+           0       0.77      0.73      0.75       451
+           1       0.79      0.82      0.80       544
+
+    accuracy                           0.78       995
+   macro avg       0.78      0.78      0.78       995
+weighted avg       0.78      0.78      0.78       995
+
+=== TESTING ===
+Accuracy: 0.7630522088353414
+
+              precision    recall  f1-score   support
+
+           0       0.73      0.72      0.72       107
+           1       0.79      0.80      0.79       142
+
+    accuracy                           0.76       249
+   macro avg       0.76      0.76      0.76       249
+weighted avg       0.76      0.76      0.76       249
