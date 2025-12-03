@@ -27,7 +27,8 @@
 
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/31dac7a77328c0fc53f860b0d916faef892b1c0d/stock%20market%20prediction/regression%20models/lstm%20output/AAPL_price_vs_timestep_train.png)
 
-![image](
+![image](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/ff65f7134cac7914b7780cbf03d1edc998765c96/stock%20market%20prediction/regression%20models/lstm%20output/AAPL_price_vs_timestep_test.png)
+
 # Evaluation and Comparison for Classification Models
 
 # Evaluation and Comparison for Sentiment Models
