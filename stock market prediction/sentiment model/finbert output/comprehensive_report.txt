@@ -1,7 +1,0 @@
-FINBERT FINE-TUNING COMPREHENSIVE REPORT
-==================================================
-
-MODEL INFORMATION:
-- Base model: yiyanghkust/finbert-tone
-- Training date: 2025-11-26 06:56:43
-- Training duration: 8:35:25.335368
