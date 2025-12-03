@@ -3,6 +3,8 @@
 # Data Collection
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/c8f9c60f55ef39eff8c05551a4e51af275019502/stock%20market%20prediction/web%20scraping/screenshot%20data%20collection/stock%20price%20dataset%20from%20yahoo%20finance.png)
 
+![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/dd12925e188e22ad143f542084bde7a1960005cd/stock%20market%20prediction/web%20scraping/screenshot%20data%20collection/news%20stock%20dataset%20from%20yahoo%20finance.png)
+
 # Exploratory Data Analysis
 
 # Data Preprocessing
