@@ -7,13 +7,8 @@ import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Input
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-
-import keras_tuner as kt  # pip install keras-tuner
+from sklearn.svm import SVR
+from sklearn.model_selection import GridSearchCV
 
 # ----------------------------
 # Force Determinism
@@ -22,28 +17,23 @@ SEED = 42
 os.environ["PYTHONHASHSEED"] = str(SEED)
 random.seed(SEED)
 np.random.seed(SEED)
-tf.random.set_seed(SEED)
-tf.keras.utils.set_random_seed(SEED)
-try:
-    tf.config.experimental.enable_op_determinism()
-except Exception:
-    pass
 
 # ----------------------------
 # Config
 # ----------------------------
 base_path = r"C:\Users\AMJAD\PycharmProjects\fyp1test\Lib\Price Stock Dataset"
 ticker = "AAPL"
-date_suffix = "2025-10-08"
+date_suffix = "2025-06-16"
 
-# Gunakan glob untuk cari file sebenar
+# Use glob to find the exact CSV file
 file_pattern = os.path.join(base_path, f"{ticker}*historical_data*{date_suffix}.csv")
-matched_files = glob.glob(file_pattern)
-if not matched_files:
-    raise FileNotFoundError(f"No files matched the pattern: {file_pattern}")
-file_path = matched_files[0]
+matching_files = glob.glob(file_pattern)
 
-output_dir = f"lstm_{ticker}_output"
+if not matching_files:
+    raise FileNotFoundError(f"No CSV file found matching pattern: {file_pattern}")
+
+file_path = matching_files[0]  # take the first match
+output_dir = f"svr_{ticker}_output"
 os.makedirs(output_dir, exist_ok=True)
 
 # ----------------------------
@@ -54,6 +44,7 @@ df.columns = [c.lower().replace(" ", "_") for c in df.columns]
 df["date"] = pd.to_datetime(df["date"], errors="coerce")
 df = df.sort_values("date").reset_index(drop=True)
 
+# Convert numeric columns
 numeric_cols = ["open", "high", "low", "close", "adj_close", "volume"]
 for col in numeric_cols:
     df[col] = df[col].astype(str).str.replace(",", "")
@@ -87,16 +78,60 @@ X_train, X_test = X_all[:split], X_all[split:]
 y_train, y_test = y_all[:split], y_all[split:]
 
 # ----------------------------
-# Helper: invert scaling for only target
+# Flatten for SVR (2D)
 # ----------------------------
+X_train_2d = X_train.reshape(X_train.shape[0], -1)
+X_test_2d = X_test.reshape(X_test.shape[0], -1)
+
+# ----------------------------
+# Hyperparameter Tuning with GridSearchCV
+# ----------------------------
+param_grid = {
+    "kernel": ["rbf", "poly", "sigmoid"],
+    "C": [1, 10, 100],
+    "gamma": ["scale", "auto", 0.01, 0.001],
+    "epsilon": [0.001, 0.01, 0.1, 1]
+}
+
+print("\nRunning GridSearchCV for SVR...")
+grid_search = GridSearchCV(
+    SVR(),
+    param_grid,
+    scoring="neg_mean_squared_error",
+    cv=3,
+    verbose=2,
+    n_jobs=-1
+)
+grid_search.fit(X_train_2d, y_train)
+
+print("\nBest Parameters found:")
+print(grid_search.best_params_)
+
+# Save best parameters to CSV
+best_params_df = pd.DataFrame([grid_search.best_params_])
+best_params_df.to_csv(os.path.join(output_dir, f"{ticker}_best_params.csv"), index=False)
+
+best_svr = grid_search.best_estimator_
+
+# ----------------------------
+# Predict & inverse scaling
+# ----------------------------
+y_train_pred = best_svr.predict(X_train_2d)
+y_test_pred = best_svr.predict(X_test_2d)
+
 def invert_scale(y_scaled, scaler, target_col_idx):
-    y_scaled = np.array(y_scaled).reshape(-1)
+    y_scaled = y_scaled.reshape(-1)
     dummy = np.zeros((len(y_scaled), len(features)))
     dummy[:, target_col_idx] = y_scaled
     return scaler.inverse_transform(dummy)[:, target_col_idx]
 
+y_train_inv = invert_scale(y_train, scaler, target_col_idx)
+y_train_pred_inv = invert_scale(y_train_pred, scaler, target_col_idx)
+y_test_inv = invert_scale(y_test, scaler, target_col_idx)
+y_test_pred_inv = invert_scale(y_test_pred, scaler, target_col_idx)
+
 # ----------------------------
-# Metrics
+# Evaluation Metrics
 # ----------------------------
 def compute_metrics(y_true, y_pred):
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
@@ -106,72 +141,6 @@ def compute_metrics(y_true, y_pred):
     mape = np.mean(np.abs((y_true - y_pred) / (np.maximum(np.abs(y_true), eps)))) * 100
     return rmse, mae, r2, mape
 
-# ----------------------------
-# HyperModel for tuning
-# ----------------------------
-def build_model(hp):
-    model = Sequential()
-    model.add(Input(shape=(X_train.shape[1], X_train.shape[2])))
-
-    model.add(LSTM(units=hp.Int("units1", 32, 128, 32), return_sequences=True))
-    model.add(BatchNormalization())
-    model.add(Dropout(rate=hp.Float("dropout1", 0.1, 0.5, 0.1), seed=SEED))
-
-    model.add(LSTM(units=hp.Int("units2", 32, 128, 32), return_sequences=False))
-    model.add(BatchNormalization())
-    model.add(Dropout(rate=hp.Float("dropout2", 0.1, 0.5, 0.1), seed=SEED))
-
-    model.add(Dense(units=hp.Int("dense_units", 16, 64, 16),
-                    activation=hp.Choice("dense_activation", ["relu", "tanh"])))
-    model.add(Dense(1))
-
-    optimizer_choice = hp.Choice("optimizer", ["adam", "rmsprop"])
-    lr = hp.Choice("learning_rate", [1e-2, 1e-3, 5e-4, 1e-4])
-    optimizer = tf.keras.optimizers.Adam(lr) if optimizer_choice == "adam" else tf.keras.optimizers.RMSprop(lr)
-    model.compile(optimizer=optimizer, loss=tf.keras.losses.Huber())
-    return model
-
-# ----------------------------
-# Run Tuner
-# ----------------------------
-tuner = kt.BayesianOptimization(build_model, objective="val_loss", max_trials=20,
-                                executions_per_trial=1, seed=SEED, overwrite=True,
-                                directory=output_dir, project_name="tuning")
-
-tuner.search(X_train, y_train, validation_data=(X_test, y_test), epochs=50, batch_size=32, verbose=1)
-best_hp = tuner.get_best_hyperparameters(1)[0]
-model = tuner.get_best_models(1)[0]
-
-# ----------------------------
-# Train final tuned model
-# ----------------------------
-
-# *** ONLY THIS PART CHANGED ***
-save_path = r"C:\Users\AMJAD\PycharmProjects\fyp1test\Lib\Price Stock Dataset\best_lstm_aapl_fixed.h5"
-
-callbacks = [
-    EarlyStopping(patience=10, restore_best_weights=True),
-    ReduceLROnPlateau(factor=0.5, patience=5, verbose=1),
-    ModelCheckpoint(save_path, save_best_only=True, verbose=1)  # <<< UPDATED
-]
-
-history = model.fit(X_train, y_train, validation_data=(X_test, y_test),
-                    epochs=100, batch_size=32, callbacks=callbacks, verbose=1)
-
-# ----------------------------
-# Predictions & Inverse scale
-# ----------------------------
-y_train_pred_scaled = model.predict(X_train)
-y_test_pred_scaled = model.predict(X_test)
-
-y_train_inv = invert_scale(y_train, scaler, target_col_idx)
-y_train_pred_inv = invert_scale(y_train_pred_scaled, scaler, target_col_idx)
-y_test_inv = invert_scale(y_test, scaler, target_col_idx)
-y_test_pred_inv = invert_scale(y_test_pred_scaled, scaler, target_col_idx)
-
-# ----------------------------
-# Metrics CSV
-# ----------------------------
 rmse_train, mae_train, r2_train, mape_train = compute_metrics(y_train_inv, y_train_pred_inv)
 rmse_test, mae_test, r2_test, mape_test = compute_metrics(y_test_inv, y_test_pred_inv)
 
@@ -182,18 +151,7 @@ metrics_df = pd.DataFrame([
 metrics_df.to_csv(os.path.join(output_dir, f"{ticker}_model_metrics.csv"), index=False)
 
 # ----------------------------
-# Best hyperparameters CSV
-# ----------------------------
-best_params = best_hp.values.copy()
-best_params_serializable = {
-    k: (int(v) if isinstance(v, (np.integer,)) else float(v) if isinstance(v, (np.floating,)) else v) for k, v in
-    best_params.items()}
-pd.DataFrame(list(best_params_serializable.items()), columns=["param", "value"]).to_csv(
-    os.path.join(output_dir, f"{ticker}_best_params.csv"), index=False
-)
-
-# ----------------------------
-# Correlation matrix
+# Correlation Matrix
 # ----------------------------
 corr = df[features].corr()
 plt.figure(figsize=(8, 6))
@@ -207,10 +165,10 @@ plt.savefig(os.path.join(output_dir, f"{ticker}_correlation_matrix.png"))
 plt.close()
 
 # ----------------------------
-# Price vs Time Step plots
+# Price vs Time Step & Predicted vs Actual
 # ----------------------------
 for dataset, y_true, y_pred, label in [("train", y_train_inv, y_train_pred_inv, "Tuned"),
-                                       ("test", y_test_inv, y_test_pred_inv, "Tuned")]:
+                                      ("test", y_test_inv, y_test_pred_inv, "Tuned")]:
     plt.figure(figsize=(12, 6))
     plt.plot(y_true, label="Actual")
     plt.plot(y_pred, label=f"Predicted ({label})")
@@ -233,4 +191,3 @@ for dataset, y_true, y_pred, label in [("train", y_train_inv, y_train_pred_inv, 
     plt.close()
 
 print(f"All outputs saved in folder: {output_dir}")
-print(f"BEST MODEL SAVED TO: {save_path}")
