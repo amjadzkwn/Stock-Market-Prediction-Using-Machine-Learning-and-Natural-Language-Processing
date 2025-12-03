@@ -1,0 +1,11 @@
+Parameter,Value
+Best Parameters,"{'max_depth': 10, 'max_features': 0.7, 'min_samples_leaf': 4, 'min_samples_split': 10, 'n_estimators': 200}"
+Best CV Score,0.7216
+Test Accuracy,0.6586
+Train Accuracy,0.9296
+Overfitting Gap,0.2710
+Number of Features,15
+Train Samples,995
+Test Samples,249
+Feature Names,"Open, High, Low, Close, Adj Close, Volume, SMA5, SMA10, EMA10, Return, Momentum, Volatility, High_Low_Ratio, Volume_Change, RSI"
+Number of Trees,200

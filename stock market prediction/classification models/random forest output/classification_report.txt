@@ -1,1 +1,31 @@
+Best Parameters:
+{'max_depth': 10, 'max_features': 0.7, 'min_samples_leaf': 4, 'min_samples_split': 10, 'n_estimators': 200}
 
+=== TRAINING ===
+Accuracy: 0.9296482412060302
+
+              precision    recall  f1-score   support
+
+           0       0.92      0.93      0.92       451
+           1       0.94      0.93      0.94       544
+
+    accuracy                           0.93       995
+   macro avg       0.93      0.93      0.93       995
+weighted avg       0.93      0.93      0.93       995
+
+=== TESTING ===
+Accuracy: 0.6586345381526104
+
+              precision    recall  f1-score   support
+
+           0       0.58      0.76      0.66       107
+           1       0.76      0.58      0.66       142
+
+    accuracy                           0.66       249
+   macro avg       0.67      0.67      0.66       249
+weighted avg       0.68      0.66      0.66       249
+
+=== OVERFITTING ANALYSIS ===
+Training Accuracy: 0.9296
+Test Accuracy: 0.6586
+Overfitting Gap: 0.2710
