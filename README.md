@@ -13,6 +13,8 @@
 
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/78513a4ce40ad2a17cc58ca58a8eee2414481648/stock%20market%20prediction/exploratory%20data%20analysis/eda%20all%20companies/AAPL2.png)
 
+![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/7e16dcabb62e45da4494563cfa669cf51207ba46/stock%20market%20prediction/exploratory%20data%20analysis/normalized_stock_price_comparison.png)
+
 # Data Preprocessing
 
 # Feature Engineering
