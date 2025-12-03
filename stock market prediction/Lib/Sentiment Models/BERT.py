@@ -1,4 +1,5 @@
-# finbert_finetune_sentiment_debug_final.py
+# bert_finetune_sentiment.py
+import os
 import sys
 import pandas as pd
 import torch
@@ -8,10 +9,10 @@ import matplotlib.pyplot as plt
 
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
+
 from transformers import (
     BertTokenizer, BertForSequenceClassification,
-    Trainer, TrainingArguments, EarlyStoppingCallback,
-    __version__ as transformers_version
+    Trainer, TrainingArguments, __version__ as transformers_version
 )
 from datasets import Dataset
 
@@ -23,6 +24,7 @@ print("Python executable:", sys.executable)
 print("Transformers version:", transformers_version)
 print("Torch version:", torch.__version__)
 print("CUDA available:", torch.cuda.is_available())
+print("Current working dir:", os.getcwd())
 
 # =====================================================
 # 1. Load Dataset
@@ -32,16 +34,14 @@ print("\nLoading dataset from:", path)
 
 df = pd.read_csv(path, encoding="ISO-8859-1", header=None)
 df.columns = ["label", "text"]
+print("Dataset shape:", df.shape)
+print("First rows:\n", df.head())
 
 # Standardize labels
 df["label"] = df["label"].str.lower().str.strip()
 label2id = {"positive": 0, "neutral": 1, "negative": 2}
 id2label = {v: k for k, v in label2id.items()}
-df = df[df["label"].isin(label2id.keys())]
 df["label"] = df["label"].map(label2id)
-
-print("Dataset shape:", df.shape)
-print("Label distribution:\n", df["label"].value_counts())
 
 # Train-test split
 train_texts, test_texts, train_labels, test_labels = train_test_split(
@@ -53,8 +53,8 @@ print("Train size:", len(train_texts), "Test size:", len(test_texts))
 # =====================================================
 # 2. Tokenization
 # =====================================================
-print("\nLoading FinBERT tokenizer...")
-tokenizer = BertTokenizer.from_pretrained("yiyanghkust/finbert-tone")
+print("\nLoading BERT tokenizer...")
+tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
 def tokenize_function(examples):
     return tokenizer(
@@ -64,6 +64,7 @@ def tokenize_function(examples):
         max_length=128
     )
 
+print("Tokenizing datasets...")
 train_dataset = Dataset.from_dict({"text": train_texts, "label": train_labels})
 test_dataset = Dataset.from_dict({"text": test_texts, "label": test_labels})
 
@@ -72,13 +73,14 @@ test_dataset = test_dataset.map(tokenize_function, batched=True)
 
 train_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
 test_dataset.set_format(type="torch", columns=["input_ids", "attention_mask", "label"])
+print("Train dataset format:", train_dataset)
 
 # =====================================================
 # 3. Load Model
 # =====================================================
-print("\nLoading FinBERT model...")
+print("\nLoading BERT-base model...")
 model = BertForSequenceClassification.from_pretrained(
-    "yiyanghkust/finbert-tone",
+    "bert-base-uncased",
     num_labels=3,
     id2label=id2label,
     label2id=label2id
@@ -94,26 +96,22 @@ def compute_metrics(eval_pred):
     return {"accuracy": acc}
 
 # =====================================================
-# 5. Training Arguments (Fixed: save_strategy match eval_strategy)
+# 5. Training Arguments
 # =====================================================
 print("\nSetting training arguments...")
 training_args = TrainingArguments(
-    output_dir="./finbert_results",
-    do_train=True,
+    output_dir="./bert_results",
     do_eval=True,
-    eval_strategy="epoch",       # evaluation setiap epoch
-    save_strategy="epoch",       # pastikan sama dengan eval_strategy
+    eval_steps=500,
+    save_steps=500,
+    save_total_limit=2,
     learning_rate=2e-5,
     per_device_train_batch_size=16,
     per_device_eval_batch_size=16,
-    num_train_epochs=5,
+    num_train_epochs=3,
     weight_decay=0.01,
-    logging_dir="./logs",
+    logging_dir="./logs_bert",
     logging_steps=100,
-    save_total_limit=2,
-    load_best_model_at_end=True,          # best model akan di-load
-    metric_for_best_model="accuracy",     # metrik rujukan
-    greater_is_better=True,
     report_to=[]  # disable wandb/tensorboard
 )
 
@@ -128,7 +126,6 @@ trainer = Trainer(
     eval_dataset=test_dataset,
     tokenizer=tokenizer,
     compute_metrics=compute_metrics,
-    callbacks=[EarlyStoppingCallback(early_stopping_patience=2)]
 )
 
 # =====================================================
@@ -145,7 +142,7 @@ y_true = test_labels
 # =====================================================
 # 8. Evaluation Report
 # =====================================================
-print("\n=== FinBERT (Fine-Tuned, Debug Final) Evaluation ===")
+print("\n=== BERT-base (Fine-Tuned) Evaluation ===")
 print("Accuracy:", accuracy_score(y_true, y_pred))
 print(classification_report(y_true, y_pred, target_names=label2id.keys(), digits=4))
 
@@ -155,7 +152,7 @@ cm = confusion_matrix(y_true, y_pred)
 plt.figure(figsize=(6, 5))
 sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
             xticklabels=labels, yticklabels=labels)
-plt.title("FinBERT Fine-Tuned (Debug Final) - Confusion Matrix")
+plt.title("BERT-base Fine-Tuned - Confusion Matrix")
 plt.xlabel("Predicted")
 plt.ylabel("True")
 plt.show()
