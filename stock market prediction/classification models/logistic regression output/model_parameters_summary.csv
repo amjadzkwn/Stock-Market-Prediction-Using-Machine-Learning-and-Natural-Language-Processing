@@ -1,0 +1,9 @@
+Parameter,Value
+Best Parameters,"{'logreg__C': 10, 'logreg__penalty': 'l1', 'logreg__solver': 'liblinear'}"
+Best CV Score,0.7739
+Test Accuracy,0.7671
+Train Accuracy,0.7809
+Number of Features,11
+Train Samples,995
+Test Samples,249
+Feature Names,"Open, High, Low, Close, Adj Close, Volume, SMA5, SMA10, EMA10, Return, Momentum"
