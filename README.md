@@ -39,7 +39,31 @@
 
 
 
-## https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/1de7d5b35b17d38cb59e46076c3b7dedfe8c1d3d/stock%20market%20prediction/classification%20models/logistic%20regression%20output/classification_report.txt
+## Training Performance Metrics
+=== TRAINING ===
+Accuracy: 0.7809045226130653
+
+              precision    recall  f1-score   support
+
+           0       0.75      0.77      0.76       451
+           1       0.80      0.79      0.80       544
+
+    accuracy                           0.78       995
+   macro avg       0.78      0.78      0.78       995
+weighted avg       0.78      0.78      0.78       995
+
+## Testing Performance Metrics
+=== TESTING ===
+Accuracy: 0.7670682730923695
+
+              precision    recall  f1-score   support
+
+           0       0.71      0.79      0.74       107
+           1       0.82      0.75      0.79       142
+
+    accuracy                           0.77       249
+   macro avg       0.76      0.77      0.77       249
+weighted avg       0.77      0.77      0.77       249
 
 # Evaluation and Comparison for Classification Models
 
