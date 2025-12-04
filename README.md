@@ -120,6 +120,11 @@ Accuracy: 0.6586345381526104
 | **Macro Avg** | 0.67 | 0.67 | 0.66 | 249 |
 | **Weighted Avg** | 0.68 | 0.66 | 0.66 | 249 |
 
+## Results Comparison
+| Model | Logistic Regression | SVM | Random Forest |
+|-------|-----------|--------|----------|
+| Accuracy     | 0.7671      | 0.7630   | 0.6586     |
+
 # Evaluation and Comparison for Sentiment Models
 
 ## Classification Report for FinBERT
@@ -160,6 +165,11 @@ Accuracy: 0.5289
 | **Accuracy** | | | 0.53 | **970** |
 | **Macro Avg** | 0.50 | 0.50 | 0.48 | 970 |
 | **Weighted Avg** | 0.60 | 0.53 | 0.54 | 970 |
+
+## Results Comparison
+| Model | FinBERT | BERT | VADER |
+|-------|-----------|--------|----------|
+| Accuracy     | 0.8649      | 0.8701   | 0.5289     |
 
 # Models Integration
 
