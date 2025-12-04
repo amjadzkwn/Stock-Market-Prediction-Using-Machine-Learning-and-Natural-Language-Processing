@@ -9,6 +9,8 @@
 
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/1073adc910fd6fac6685d04ee64e8f95b30b0d21/stock%20market%20prediction/web%20scraping/screenshot%20data%20collection/aapl%20news%20dataset.png)
 
+All stock price dataset at here [Stock Price Dataset](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/tree/bca408bd895c7484412807ff55b2ec8e9da484a8/stock%20market%20prediction/stock%20price%20dataset)
+
 # Exploratory Data Analysis
 
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/c80c696a81cd3f140af3aa10675e0573cdbd9f10/stock%20market%20prediction/exploratory%20data%20analysis/eda%20all%20companies/AAPL1.png)
