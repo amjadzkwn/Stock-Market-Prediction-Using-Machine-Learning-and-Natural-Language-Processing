@@ -172,7 +172,16 @@ Accuracy: 0.5289
 | **Accuracy**     | 0.8649      | 0.8701   | 0.5289     |
 
 # Models Integration
+## Hybrid Model Weight Distribution
+| Model | Weight |
+|-------|-----------|
+| **LSTM** | 60% |
+| **Logistic Regression** | 30% |
+| **FinBERT** | 10% |
 
 # Hybrid Model Output
+## AAPL Dashboard
+
+## Portfolio Action Distribution and Stock Scores Distribution
 
 # Impact of The Project
