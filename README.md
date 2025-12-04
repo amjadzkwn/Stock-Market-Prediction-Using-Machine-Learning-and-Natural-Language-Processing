@@ -181,6 +181,7 @@ Accuracy: 0.5289
 
 # Hybrid Model Output
 ## AAPL Dashboard
+![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/3d0ee4eaf588f4c10654866ea344355362c4440f/stock%20market%20prediction/hybrid%20model/dashboard/AAPL_compact_dashboard.png)
 
 ## Portfolio Action Distribution and Stock Scores Distribution
 
