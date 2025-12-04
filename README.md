@@ -122,6 +122,45 @@ Accuracy: 0.6586345381526104
 
 # Evaluation and Comparison for Sentiment Models
 
+## Classification Report for FinBERT
+Accuracy: 0.8649
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| Positive     | 0.86      | 0.72   | 0.78     | 273     |
+| Neutral     | 0.87      | 0.93   | 0.89     | 576     |
+| Negative      | 0.85          | 0.90       | 0.87         |  121       |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.86 | **970** |
+| **Macro Avg** | 0.86 | 0.85 | 0.85 | 970 |
+| **Weighted Avg** | 0.86 | 0.86 | 0.86 | 970 |
+
+## Classification Report for BERT
+Accuracy: 0.8701
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| Positive     | 0.80      | 0.81   | 0.81     | 273     |
+| Neutral     | 0.91      | 0.89   | 0.90     | 576     |
+| Negative      | 0.84          | 0.93       | 0.88         |  121       |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.87 | **970** |
+| **Macro Avg** | 0.85 | 0.87 | 0.86 | 970 |
+| **Weighted Avg** | 0.87 | 0.87 | 0.87 | 970 |
+
+## Classification Report for VADER
+Accuracy: 0.5289
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| Positive     | 0.38      | 0.68   | 0.49     | 273     |
+| Neutral     | 0.74      | 0.50   | 0.60     | 576     |
+| Negative      | 0.38          | 0.31       | 0.35         |  121       |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.53 | **970** |
+| **Macro Avg** | 0.50 | 0.50 | 0.48 | 970 |
+| **Weighted Avg** | 0.60 | 0.53 | 0.54 | 970 |
+
 # Models Integration
 
 # Hybrid Model Output
