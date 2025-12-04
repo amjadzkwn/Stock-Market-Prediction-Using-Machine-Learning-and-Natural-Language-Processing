@@ -123,7 +123,7 @@ Accuracy: 0.6586345381526104
 ## Results Comparison
 | Model | Logistic Regression | SVM | Random Forest |
 |-------|-----------|--------|----------|
-| Accuracy     | 0.7671      | 0.7630   | 0.6586     |
+| **Accuracy**     | 0.7671      | 0.7630   | 0.6586     |
 
 # Evaluation and Comparison for Sentiment Models
 
@@ -169,7 +169,7 @@ Accuracy: 0.5289
 ## Results Comparison
 | Model | FinBERT | BERT | VADER |
 |-------|-----------|--------|----------|
-| Accuracy     | 0.8649      | 0.8701   | 0.5289     |
+| **Accuracy**     | 0.8649      | 0.8701   | 0.5289     |
 
 # Models Integration
 
