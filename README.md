@@ -40,7 +40,7 @@
 ## Training MLPRegressor
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/4131012d59141be7f817e07d65dba70cb1490b99/stock%20market%20prediction/regression%20models/mlpregressor%20output/AAPL_price_vs_timestep_train.png)
 
-# Testing MLPRegressor
+## Testing MLPRegressor
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/a532880c64800f0bbd60991c33de642710e7656e/stock%20market%20prediction/regression%20models/mlpregressor%20output/AAPL_price_vs_timestep_test.png)
 
 # Evaluation and Comparison for Classification Models
@@ -69,6 +69,56 @@ Accuracy: 0.7670682730923695
 | **Accuracy** | | | 0.77 | **249** |
 | **Macro Avg** | 0.76 | 0.77 | 0.77 | 249 |
 | **Weighted Avg** | 0.77 | 0.77 | 0.77 | 249 |
+
+## Classification Report for SVM
+=== TRAINING ===
+Accuracy: 0.7809045226130653
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.77      | 0.73   | 0.75     | 451     |
+| 1     | 0.79      | 0.82   | 0.80     | 544     |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.78 | **995** |
+| **Macro Avg** | 0.78 | 0.78 | 0.78 | 995 |
+| **Weighted Avg** | 0.78 | 0.78 | 0.78 | 995 |
+
+=== TESTING ===
+Accuracy: 0.7630522088353414
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.73      | 0.72   | 0.72     | 107     |
+| 1     | 0.79      | 0.80   | 0.79     | 142     |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.76 | **249** |
+| **Macro Avg** | 0.76 | 0.76 | 0.76 | 249 |
+| **Weighted Avg** | 0.76 | 0.76 | 0.76 | 249 |
+
+## Classification Report for Random Forest
+=== TRAINING ===
+Accuracy: 0.9296482412060302
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.92      | 0.93   | 0.92     | 451     |
+| 1     | 0.94      | 0.93   | 0.94     | 544     |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.93 | **995** |
+| **Macro Avg** | 0.93 | 0.93 | 0.93 | 995 |
+| **Weighted Avg** | 0.93 | 0.93 | 0.93 | 995 |
+
+=== TESTING ===
+Accuracy: 0.6586345381526104
+
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.58      | 0.76   | 0.66     | 107     |
+| 1     | 0.76      | 0.58   | 0.66     | 142     |
+|       |           |        |          |         |
+| **Accuracy** | | | 0.66 | **249** |
+| **Macro Avg** | 0.67 | 0.67 | 0.66 | 249 |
+| **Weighted Avg** | 0.68 | 0.66 | 0.66 | 249 |
 
 # Evaluation and Comparison for Sentiment Models
 
