@@ -25,21 +25,27 @@
 
 # Evaluation and Comparison for Regression Models
 
+## Training LSTM
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/31dac7a77328c0fc53f860b0d916faef892b1c0d/stock%20market%20prediction/regression%20models/lstm%20output/AAPL_price_vs_timestep_train.png)
 
+## Testing LSTM
 ![image](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/ff65f7134cac7914b7780cbf03d1edc998765c96/stock%20market%20prediction/regression%20models/lstm%20output/AAPL_price_vs_timestep_test.png)
 
+## Training SVR
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/225e4f3014e263259ef79237f618caa3503a82e2/stock%20market%20prediction/regression%20models/svr%20output/AAPL_price_vs_timestep_train.png)
 
+## Testing SVR
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/a295cae0a771f3ef035002ada06ba76a2cd570a0/stock%20market%20prediction/regression%20models/svr%20output/AAPL_price_vs_timestep_test.png)
 
+## Training MLPRegressor
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/4131012d59141be7f817e07d65dba70cb1490b99/stock%20market%20prediction/regression%20models/mlpregressor%20output/AAPL_price_vs_timestep_train.png)
 
+# Testing MLPRegressor
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/a532880c64800f0bbd60991c33de642710e7656e/stock%20market%20prediction/regression%20models/mlpregressor%20output/AAPL_price_vs_timestep_test.png)
 
+# Evaluation and Comparison for Classification Models
 
-
-## Training Performance Metrics
+## Training Classification Report Logistic Regression
 === TRAINING ===
 Accuracy: 0.7809045226130653
 
@@ -64,8 +70,6 @@ Accuracy: 0.7670682730923695
     accuracy                           0.77       249
    macro avg       0.76      0.77      0.77       249
 weighted avg       0.77      0.77      0.77       249
-
-# Evaluation and Comparison for Classification Models
 
 # Evaluation and Comparison for Sentiment Models
 
