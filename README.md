@@ -23,6 +23,8 @@ All stock news dataset at here [Stock News Dataset](https://github.com/amjadzkwn
 
 ![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/7e16dcabb62e45da4494563cfa669cf51207ba46/stock%20market%20prediction/exploratory%20data%20analysis/normalized_stock_price_comparison.png)
 
+![image alt](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing/blob/722cb3a4f89e58470468808df39dc3888d891bd2/stock%20market%20prediction/exploratory%20data%20analysis/total_returns_and_annualized_volatility.png)
+
 # Data Preprocessing
 
 # Feature Engineering
