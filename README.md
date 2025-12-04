@@ -45,31 +45,30 @@
 
 # Evaluation and Comparison for Classification Models
 
-## Training Classification Report Logistic Regression
+## Classification Report for Logistic Regression
 === TRAINING ===
 Accuracy: 0.7809045226130653
 
-              precision    recall  f1-score   support
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.75      | 0.77   | 0.76     | 451     |
+| 1     | 0.80      | 0.79   | 0.80     | 544     |
+|       |           |        |          |         |
+| **Accuracy** | 0.78 | | | **995** |
+| **Macro Avg** | 0.78 | 0.78 | 0.78 | 995 |
+| **Weighted Avg** | 0.78 | 0.78 | 0.78 | 995 |
 
-           0       0.75      0.77      0.76       451
-           1       0.80      0.79      0.80       544
-
-    accuracy                           0.78       995
-   macro avg       0.78      0.78      0.78       995
-weighted avg       0.78      0.78      0.78       995
-
-## Testing Performance Metrics
 === TESTING ===
 Accuracy: 0.7670682730923695
 
-              precision    recall  f1-score   support
-
-           0       0.71      0.79      0.74       107
-           1       0.82      0.75      0.79       142
-
-    accuracy                           0.77       249
-   macro avg       0.76      0.77      0.77       249
-weighted avg       0.77      0.77      0.77       249
+| Class | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| 0     | 0.71      | 0.79   | 0.74     | 107     |
+| 1     | 0.82      | 0.75   | 0.79     | 142     |
+|       |           |        |          |         |
+| **Accuracy** | 0.77 | | | **249** |
+| **Macro Avg** | 0.76 | 0.77 | 0.77 | 249 |
+| **Weighted Avg** | 0.77 | 0.77 | 0.77 | 249 |
 
 # Evaluation and Comparison for Sentiment Models
 
