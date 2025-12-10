@@ -107,6 +107,9 @@ Accuracy: 0.7630522088353414
 | **Macro Avg** | 0.76 | 0.76 | 0.76 | 249 |
 | **Weighted Avg** | 0.76 | 0.76 | 0.76 | 249 |
 
+The SVM classification results show stable and consistent performance on both the training and testing sets. With a training accuracy of 0.78 and a testing accuracy of 0.76, the model generalizes well without signs of overfitting. Class 0 has slightly lower recall, while Class 1 performs strongly across all metrics, indicating the model is slightly better at identifying Class 1 instances. Overall, the SVM model demonstrates reliable predictive performance with balanced precision, recall, and F1-scores across both classes.
+
+
 ## Classification Report for Random Forest
 === TRAINING ===
 Accuracy: 0.9296482412060302
