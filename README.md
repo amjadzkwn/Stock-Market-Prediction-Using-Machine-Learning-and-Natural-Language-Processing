@@ -158,6 +158,8 @@ Accuracy: 0.8649
 | **Macro Avg** | 0.86 | 0.85 | 0.85 | 970 |
 | **Weighted Avg** | 0.86 | 0.86 | 0.86 | 970 |
 
+The FinBERT classification results show strong overall performance, achieving an accuracy of 0.8649. The model performs especially well on the Neutral and Negative classes, with high recall values of 0.93 and 0.90, indicating that it can correctly identify these sentiments with good reliability. Although the Positive class has a slightly lower recall at 0.72, its precision remains solid at 0.86. The macro and weighted averages further confirm consistent performance across all classes. Overall, FinBERT demonstrates high effectiveness in sentiment classification, particularly in handling neutral and negative texts.
+
 ## Classification Report for BERT
 Accuracy: 0.8701
 
