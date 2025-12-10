@@ -135,6 +135,8 @@ Accuracy: 0.6586345381526104
 | **Macro Avg** | 0.67 | 0.67 | 0.66 | 249 |
 | **Weighted Avg** | 0.68 | 0.66 | 0.66 | 249 |
 
+The Random Forest results show a strong performance during training, with a high accuracy of 0.93 and excellent precision, recall, and F1-scores for both classes. However, the testing accuracy drops significantly to 0.66, indicating clear overfitting. While the model learns the training data very well, it struggles to generalize to unseen data. The imbalance between class performance is also visible on the test set, where Class 0 achieves higher recall but lower precision, and Class 1 shows the opposite pattern. Overall, the model fits the training data too closely, resulting in weaker and less reliable performance on new samples.
+
 ## Results Comparison
 | Model | Logistic Regression | SVM | Random Forest |
 |-------|-----------|--------|----------|
