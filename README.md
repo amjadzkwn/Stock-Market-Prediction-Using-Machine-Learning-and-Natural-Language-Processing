@@ -80,6 +80,8 @@ Accuracy: 0.7670682730923695
 | **Macro Avg** | 0.76 | 0.77 | 0.77 | 249 |
 | **Weighted Avg** | 0.77 | 0.77 | 0.77 | 249 |
 
+The classification results for Logistic Regression show consistent and balanced performance across both training and testing sets. During training, the model achieved an accuracy of 0.78 with fairly even precision, recall, and F1-scores for both classes, indicating stable learning without overfitting. On the test set, the accuracy remains close at 0.77, demonstrating good generalization. Class 0 performs slightly lower in precision but higher in recall, while Class 1 shows the opposite trend, suggesting the model can correctly identify both classes with reasonable reliability. Overall, the model provides solid predictive capability with balanced metrics across classes.
+
 ## Classification Report for SVM
 === TRAINING ===
 Accuracy: 0.7809045226130653
