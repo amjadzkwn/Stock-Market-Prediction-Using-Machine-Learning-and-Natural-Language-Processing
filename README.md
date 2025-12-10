@@ -109,7 +109,6 @@ Accuracy: 0.7630522088353414
 
 The SVM classification results show stable and consistent performance on both the training and testing sets. With a training accuracy of 0.78 and a testing accuracy of 0.76, the model generalizes well without signs of overfitting. Class 0 has slightly lower recall, while Class 1 performs strongly across all metrics, indicating the model is slightly better at identifying Class 1 instances. Overall, the SVM model demonstrates reliable predictive performance with balanced precision, recall, and F1-scores across both classes.
 
-
 ## Classification Report for Random Forest
 === TRAINING ===
 Accuracy: 0.9296482412060302
@@ -141,6 +140,8 @@ The Random Forest results show a strong performance during training, with a high
 | Model | Logistic Regression | SVM | Random Forest |
 |-------|-----------|--------|----------|
 | **Accuracy**     | 0.7671      | 0.7630   | 0.6586     |
+
+The comparison of results shows that Logistic Regression performs the best among the three models, achieving the highest testing accuracy of 0.7671. SVM follows closely with an accuracy of 0.7630, demonstrating similar and consistent performance. Random Forest, despite its strong training results, records the lowest testing accuracy at 0.6586, indicating overfitting and weaker generalization. Overall, Logistic Regression and SVM provide more reliable and stable predictions compared to Random Forest for this dataset.
 
 # Evaluation and Comparison for Sentiment Models
 
