@@ -173,6 +173,8 @@ Accuracy: 0.8701
 | **Macro Avg** | 0.85 | 0.87 | 0.86 | 970 |
 | **Weighted Avg** | 0.87 | 0.87 | 0.87 | 970 |
 
+The BERT classification results show strong performance with an accuracy of 0.8701, slightly outperforming FinBERT. The model handles Neutral and Negative sentiments particularly well, achieving high F1-scores of 0.90 and 0.88, supported by strong recall values. The Positive class also performs consistently with balanced precision and recall at around 0.80–0.81. The macro and weighted averages indicate stable performance across all classes. Overall, BERT demonstrates excellent generalization and reliable sentiment classification, making it a highly effective model for this dataset.
+
 ## Classification Report for VADER
 Accuracy: 0.5289
 
