@@ -212,4 +212,4 @@ All 10 dashboard at here [Stock Dashboard](https://github.com/amjadzkwn/Stock-Ma
 
 # Impact of The Project
 
-**GitHub:** [Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing.git)
+**GitHub:** [Stock-Market-Prediction-ML-NLP](https://github.com/amjadzkwn/Stock-Market-Prediction-Using-Machine-Learning-and-Natural-Language-Processing.git)
