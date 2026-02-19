@@ -4,7 +4,7 @@
 
 This project explores the integration of machine learning and natural language processing (NLP) to predict stock market movements by combining historical stock price data with financial news sentiment. The system adopts a more holistic and data-driven approach to stock market prediction by leveraging both numerical time-series data and unstructured textual information.
 
-The analysis is conducted across 10 major U.S.-based companies which are 
+The analysis is conducted across 10 major U.S.-based companies which are:
 1. Apple Inc. (AAPL)
 2. Advanced Micro Devices (AMD)
 3. Amazon.com Inc. (AMZN)
